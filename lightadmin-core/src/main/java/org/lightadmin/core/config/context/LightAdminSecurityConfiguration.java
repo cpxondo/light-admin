@@ -63,10 +63,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.servlet.Filter;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newLinkedHashMap;
@@ -109,7 +106,7 @@ public class LightAdminSecurityConfiguration {
     public Filter filterSecurityInterceptor(AuthenticationManager authenticationManager) throws Exception {
         FilterSecurityInterceptor filter = new FilterSecurityInterceptor();
         filter.setAuthenticationManager(authenticationManager);
-        filter.setAccessDecisionManager(new AffirmativeBased(asList((AccessDecisionVoter) new RoleVoter())));
+        filter.setAccessDecisionManager(new AffirmativeBased(Arrays.<AccessDecisionVoter<? extends Object>>asList((AccessDecisionVoter<Object>) new RoleVoter())));
         filter.setSecurityMetadataSource(securityMetadataSource());
         filter.afterPropertiesSet();
         return filter;
