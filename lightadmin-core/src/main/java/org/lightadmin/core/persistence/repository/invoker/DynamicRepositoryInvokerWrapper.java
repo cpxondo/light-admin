@@ -20,7 +20,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.rest.core.invoke.RepositoryInvoker;
+import org.springframework.data.repository.support.RepositoryInvoker;
+import org.springframework.util.MultiValueMap;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -94,18 +95,8 @@ public class DynamicRepositoryInvokerWrapper implements DynamicRepositoryInvoker
     }
 
     @Override
-    public boolean exposesSave() {
-        return repositoryInvoker.exposesSave();
-    }
-
-    @Override
     public boolean hasDeleteMethod() {
         return repositoryInvoker.hasDeleteMethod();
-    }
-
-    @Override
-    public boolean exposesDelete() {
-        return repositoryInvoker.exposesDelete();
     }
 
     @Override
@@ -114,17 +105,11 @@ public class DynamicRepositoryInvokerWrapper implements DynamicRepositoryInvoker
     }
 
     @Override
-    public boolean exposesFindOne() {
-        return repositoryInvoker.exposesFindOne();
-    }
-
-    @Override
     public boolean hasFindAllMethod() {
         return repositoryInvoker.hasFindAllMethod();
     }
 
     @Override
-    public boolean exposesFindAll() {
-        return repositoryInvoker.exposesFindAll();
+    public Object invokeQueryMethod(Method method, MultiValueMap<String, ? extends Object> multiValueMap, Pageable pageable, Sort sort) {
+        return repositoryInvoker.invokeQueryMethod(method, multiValueMap, pageable, sort);
     }
-}

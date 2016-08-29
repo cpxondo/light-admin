@@ -17,8 +17,8 @@ package org.lightadmin.core.persistence.repository.invoker;
 
 import org.lightadmin.core.persistence.repository.DynamicJpaRepository;
 import org.springframework.data.repository.support.Repositories;
-import org.springframework.data.rest.core.invoke.RepositoryInvoker;
-import org.springframework.data.rest.core.invoke.RepositoryInvokerFactory;
+import org.springframework.data.repository.support.RepositoryInvoker;
+import org.springframework.data.repository.support.RepositoryInvokerFactory;
 
 public class DynamicRepositoryInvokerFactory implements RepositoryInvokerFactory {
 
