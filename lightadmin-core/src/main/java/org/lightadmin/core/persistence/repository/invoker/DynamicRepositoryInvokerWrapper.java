@@ -113,3 +113,4 @@ public class DynamicRepositoryInvokerWrapper implements DynamicRepositoryInvoker
     public Object invokeQueryMethod(Method method, MultiValueMap<String, ? extends Object> multiValueMap, Pageable pageable, Sort sort) {
         return repositoryInvoker.invokeQueryMethod(method, multiValueMap, pageable, sort);
     }
+}
